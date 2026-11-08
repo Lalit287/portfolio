@@ -2,6 +2,8 @@
 
 A static portfolio site in a retro pixel-art style. It needs no build step and no dependencies.
 
+**Live site:** https://lalit287.github.io/portfolio/
+
 ## View it
 Double-click `index.html`. You need an internet connection for the Google pixel fonts.
 
@@ -13,7 +15,7 @@ Double-click `index.html`. You need an internet connection for the Google pixel 
 - **Resume:** replace `assets/Lalit-Aditya-Yanala-Resume.pdf`.
 
 ## Publish free on GitHub Pages
-1. Create a repo named `Lalit287.github.io` on GitHub.
+1. Create a public repo on GitHub (this one is `portfolio`).
 2. Upload the contents of this folder to it.
 3. Go to Settings → Pages and choose Deploy from branch `main` / root.
-4. Your site will be live at `https://lalit287.github.io`.
+4. Your site will be live at `https://lalit287.github.io/portfolio/`.
