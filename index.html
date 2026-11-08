@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lalit Aditya Yanala · Portfolio</title>
+  <meta name="description" content="Lalit Aditya Yanala — Computer Science undergrad at SRM University building full-stack web apps, cloud-native systems on AWS & Azure, and data pipelines.">
+  <meta name="author" content="Lalit Aditya Yanala">
+  <meta property="og:title" content="Lalit Aditya Yanala · Portfolio">
+  <meta property="og:description" content="Full-stack developer & data engineer. Projects in MERN, Next.js, AWS, Azure and machine learning.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/avatar-pixel.png">
+  <meta name="theme-color" content="#1a1c2c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen&family=VT323&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Apply saved theme / CRT setting before first paint (no flash)
+    (function () {
+      try {
+        var t = localStorage.getItem('lay-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        if (localStorage.getItem('lay-crt') === 'off') document.documentElement.classList.add('crt-off');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Atmosphere: pixel sky, clouds, plane, CRT ===== -->
+  <canvas id="sky" class="sky" aria-hidden="true"></canvas>
+  <div class="clouds" id="clouds" aria-hidden="true"></div>
+  <div class="crt" aria-hidden="true"></div>
+
+  <!-- ===== HUD navbar ===== -->
+  <header class="hud" id="top">
+    <div class="hud__inner">
+      <a class="hud__logo" href="#about" aria-label="Lalit Aditya Yanala, back to top">
+        <span class="hud__logo-mark" aria-hidden="true">LAY</span>
+        <span class="hud__hearts" aria-hidden="true"><i data-icon="heart"></i><i data-icon="heart"></i><i data-icon="heart"></i></span>
+      </a>
+
+      <nav class="hud__nav" aria-label="Primary">
+        <ul>
+          <li><a href="#about" data-nav>About</a></li>
+          <li><a href="#experience" data-nav>Experience</a></li>
+          <li><a href="#projects" data-nav>Projects</a></li>
+          <li><a href="#skills" data-nav>Skills</a></li>
+          <li><a href="#education" data-nav>Education</a></li>
+          <li><a href="#contact" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hud__controls">
+        <button class="toggle" id="theme-toggle" type="button" aria-pressed="false" data-tip="Switch day / night">
+          <i data-icon="moon" class="toggle__icon toggle__icon--moon"></i>
+          <i data-icon="sun" class="toggle__icon toggle__icon--sun"></i>
+          <span class="toggle__label">Night</span>
+        </button>
+        <button class="toggle" id="crt-toggle" type="button" aria-pressed="true" data-tip="Scanline effect">
+          <i data-icon="tv" class="toggle__icon"></i>
+          <span class="toggle__label">CRT</span>
+        </button>
+        <button class="hamburger" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Mobile full-screen menu ===== -->
+  <div class="menu-overlay" id="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <p class="menu-overlay__title">— PAUSE MENU —</p>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="btn btn--ghost" type="button" id="menu-close">Resume game ✕</button>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <!-- ===== HERO / ABOUT ===== -->
+    <section class="section hero" id="about" aria-labelledby="hero-title">
+      <div class="hero__grid">
+        <div class="panel panel--dialog reveal">
+          <span class="panel__tab">Player 1</span>
+          <p class="hero__eyebrow"><span class="blink" aria-hidden="true">►</span> Hello, world! I'm</p>
+          <h1 class="hero__title" id="hero-title">Lalit Aditya Yanala</h1>
+          <p class="hero__class">
+            <span class="label">Class</span> Full-Stack Developer <span aria-hidden="true">·</span> Data Engineer
+          </p>
+          <p class="hero__meta">
+            <i data-icon="pin"></i> Vijayawada, Andhra Pradesh, India
+          </p>
+          <div class="hero__bio">
+            <p>
+              I'm a Computer Science undergrad at <strong>SRM University</strong> (Class of 2027) who builds
+              full-stack web apps, cloud-native systems on <strong>AWS</strong> and <strong>Azure</strong>,
+              and data pipelines that turn raw data into decisions.
+            </p>
+            <p>
+              Recent quests: a serverless loan platform that cuts decisions from days to 15 minutes,
+              a real-time classroom intelligence platform, and an Azure ETL pipeline built during my
+              data engineering internship.
+            </p>
+            <span class="dialog-next blink" aria-hidden="true">▼</span>
+          </div>
+          <div class="hero__actions">
+            <a class="btn" href="#projects">► Press Start</a>
+            <a class="btn btn--secondary" href="assets/Lalit-Aditya-Yanala-Resume.pdf" download>
+              <i data-icon="download"></i> Resume
+            </a>
+          </div>
+          <ul class="socials" aria-label="Profiles">
+            <li><a class="icon-btn" href="https://github.com/Lalit287" target="_blank" rel="noopener" data-tip="GitHub · Lalit287" aria-label="GitHub profile"><i data-icon="github"></i></a></li>
+            <li><a class="icon-btn" href="https://www.linkedin.com/in/lalit-aditya-yanala/" target="_blank" rel="noopener" data-tip="LinkedIn" aria-label="LinkedIn profile"><i data-icon="linkedin"></i></a></li>
+            <li><a class="icon-btn" href="mailto:lalitadityayanala@gmail.com" data-tip="lalitadityayanala@gmail.com" aria-label="Email Lalit"><i data-icon="mail"></i></a></li>
+          </ul>
+        </div>
+
+        <aside class="panel status reveal" aria-label="Player status">
+          <span class="panel__tab panel__tab--cyan">Status</span>
+          <div class="avatar" id="avatar">
+            <div class="avatar__frame bob">
+              <img class="avatar__pixel" src="assets/avatar-pixel.png" width="72" height="90" alt="Pixel-art portrait of Lalit Aditya Yanala">
+              <img class="avatar__real" src="assets/avatar.jpg" width="320" height="400" alt="" loading="lazy">
+            </div>
+            <button class="avatar__switch" id="avatar-switch" type="button" aria-pressed="false">Show HD</button>
+          </div>
+          <dl class="stats">
+            <div class="stat">
+              <dt>GPA</dt>
+              <dd>
+                <span class="bar" data-value="8.99" data-max="10" data-color="green" role="meter" aria-valuemin="0" aria-valuemax="10" aria-valuenow="8.99" aria-label="GPA 8.99 out of 10"></span>
+                <span class="stat__num">8.99</span>
+              </dd>
+            </div>
+            <div class="stat">
+              <dt>12th</dt>
+              <dd>
+                <span class="bar" data-value="96.4" data-max="100" data-color="cyan" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="96.4" aria-label="Intermediate score 96.4 percent"></span>
+                <span class="stat__num">96.4%</span>
+              </dd>
+            </div>
+          </dl>
+          <ul class="counters">
+            <li><span class="counters__num">10</span><span class="counters__label">Projects</span></li>
+            <li><span class="counters__num">1</span><span class="counters__label">Internship</span></li>
+            <li><span class="counters__num">3</span><span class="counters__label">Certs</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <h2 class="section__title reveal" id="exp-title"><span aria-hidden="true">01 ·</span> Experience</h2>
+      <article class="panel quest reveal">
+        <span class="panel__tab">Quest log</span>
+        <header class="quest__head">
+          <div>
+            <h3 class="card__title">Data Engineering Intern</h3>
+            <p class="quest__org">EDUBOT Software and Services</p>
+          </div>
+          <div class="quest__side">
+            <span class="badge badge--green">✓ Quest complete</span>
+            <span class="quest__date">June 2025 – July 2025</span>
+          </div>
+        </header>
+        <ul class="list">
+          <li>Designed and deployed a scalable cloud-native ETL pipeline on Azure (Blob Storage → Data Factory → SQL Database), automating the end-to-end FMCG sales data flow and reducing manual data handling to zero.</li>
+          <li>Cleaned and transformed raw supply chain data with Pandas and NumPy, engineering business-ready features like adjusted revenue and demand indicators, boosting data reliability by 30%.</li>
+          <li>Built Power BI dashboards delivering real-time supply chain insights across regions, product categories and store types, cutting reporting time by 40%.</li>
+        </ul>
+        <ul class="chips" aria-label="Tools used">
+          <li class="chip">Azure Blob Storage</li>
+          <li class="chip">Azure Data Factory</li>
+          <li class="chip">Azure SQL</li>
+          <li class="chip">Pandas</li>
+          <li class="chip">NumPy</li>
+          <li class="chip">Power BI</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects" aria-labelledby="proj-title">
+      <h2 class="section__title reveal" id="proj-title"><span aria-hidden="true">02 ·</span> Projects</h2>
+
+      <div class="filters reveal" role="group" aria-label="Filter projects">
+        <span class="filters__label">Select world:</span>
+        <button class="btn btn--small" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="btn btn--small btn--ghost" type="button" data-filter="fullstack" aria-pressed="false">Full-stack</button>
+        <button class="btn btn--small btn--ghost" type="button" data-filter="cloud" aria-pressed="false">Cloud</button>
+        <button class="btn btn--small btn--ghost" type="button" data-filter="data" aria-pressed="false">Data &amp; ML</button>
+      </div>
+      <p class="sr-only" id="filter-status" aria-live="polite"></p>
+
+      <div class="projects">
+        <!-- Featured -->
+        <article class="panel project project--featured reveal" data-cat="cloud fullstack">
+          <span class="panel__tab"><i data-icon="star"></i> Featured</span>
+          <h3 class="card__title">FinServe</h3>
+          <p class="project__sub">Cloud-native loan origination &amp; credit scoring portal</p>
+          <ul class="list">
+            <li>Serverless AWS loan-origination platform on a VPC-isolated architecture (7 Lambda functions, API Gateway, DynamoDB, S3, Cognito), cutting loan decision time from 5–10 days to 15 minutes for NBFC applicants.</li>
+            <li>Automated document verification with AWS Textract and presigned S3 URLs for direct browser-to-cloud uploads, with group-based (applicant / loan officer / admin) authorization via Cognito JWT.</li>
+            <li>Tamper-proof audit logging with DynamoDB IAM deny-on-delete policies and CloudTrail log-file validation for NBFC regulatory compliance.</li>
+          </ul>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">Next.js</li><li class="chip">TypeScript</li><li class="chip chip--orange">AWS Lambda</li><li class="chip chip--orange">API Gateway</li><li class="chip chip--orange">DynamoDB</li><li class="chip chip--orange">Cognito</li><li class="chip chip--orange">S3</li><li class="chip chip--orange">CloudFront</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small" href="https://github.com/Lalit287/FinServe-Loan-Application-Credit-Scoring-Portal" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project project--featured reveal" data-cat="fullstack">
+          <span class="panel__tab"><i data-icon="star"></i> Featured</span>
+          <h3 class="card__title">Cognita</h3>
+          <p class="project__sub">AI-driven classroom collaboration &amp; intelligence platform</p>
+          <ul class="list">
+            <li>Full-stack MERN + TypeScript platform with role-based access for teachers, students and admins, JWT and Google OAuth auth, and real-time communication over Socket.io.</li>
+            <li>Analytics Intelligence Engine that computes composite student risk scores from performance, submission timeliness and forum engagement, flagging declining trends early.</li>
+            <li>Peer-mentoring matcher, infinite-depth doubt forum with teacher endorsements, assignment management with live grade analytics, and an optimistic-UI notification system.</li>
+          </ul>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">React</li><li class="chip">TypeScript</li><li class="chip chip--green">Node.js</li><li class="chip chip--green">Express</li><li class="chip chip--gold">MongoDB</li><li class="chip">Socket.io</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small" href="https://github.com/Lalit287/cognita" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project project--featured reveal" data-cat="fullstack data">
+          <span class="panel__tab"><i data-icon="star"></i> Featured</span>
+          <h3 class="card__title">PathFinder</h3>
+          <p class="project__sub">AI-based career path recommendation system</p>
+          <ul class="list">
+            <li>Full-stack career exploration platform with personalized recommendations and adaptive learning roadmaps based on education, skills and interests.</li>
+            <li>Resilient multi-provider AI engine (Gemini → Groq → OpenRouter fallback chain) with circuit breakers, rate limiting and LRU caching for high availability.</li>
+            <li>Weighted recommendation algorithm matching users to career paths, plus a side-by-side career comparison tool.</li>
+          </ul>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">Next.js</li><li class="chip">TypeScript</li><li class="chip chip--gold">MongoDB</li><li class="chip chip--orange">Gemini API</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small" href="https://github.com/Lalit287/Career-path-recommendation-system" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <!-- More projects -->
+        <article class="panel project reveal" data-cat="data">
+          <span class="panel__tab panel__tab--cyan">Data</span>
+          <h3 class="card__title">DevPulse</h3>
+          <p>Historical GitHub activity analytics with batch pipelines, streaming replay and repository popularity prediction.</p>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">PySpark</li><li class="chip">Kafka</li><li class="chip">Airflow</li><li class="chip">HDFS</li><li class="chip chip--gold">PostgreSQL</li><li class="chip chip--green">Streamlit</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="https://github.com/Lalit287/devpulse-github-analytics" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project reveal" data-cat="data">
+          <span class="panel__tab panel__tab--cyan">Data &amp; ML</span>
+          <h3 class="card__title">RiverWatch AI</h3>
+          <p>River water quality analytics: interactive dashboards, GIS pollution hotspot maps, pollutant forecasting, explainable AI and ML-based quality classification.</p>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">Python</li><li class="chip chip--green">Streamlit</li><li class="chip">scikit-learn</li><li class="chip">Folium</li><li class="chip chip--orange">Docker</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="https://github.com/Lalit287/RiverWatch" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project reveal" data-cat="data">
+          <span class="panel__tab panel__tab--cyan">ML</span>
+          <h3 class="card__title">SmartAQI</h3>
+          <p>PM2.5 forecasting and pollution analytics: multi-dataset consolidation, EDA, a LightGBM model evaluated on RMSE, MAE and R², and SHAP explainability.</p>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">Python</li><li class="chip">LightGBM</li><li class="chip">SHAP</li><li class="chip">Pandas</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="https://github.com/Lalit287/SmartAQI-PM2.5-Forecasting-Pollution-Analytics" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project reveal" data-cat="data">
+          <span class="panel__tab panel__tab--cyan">Data</span>
+          <h3 class="card__title">ADR Analytics Dashboard</h3>
+          <p>Interactive dashboard analysing FDA Adverse Drug Reaction reports pulled from the openFDA API, with drug, reaction and demographic breakdowns.</p>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">Python</li><li class="chip chip--green">Streamlit</li><li class="chip chip--gold">SQLite</li><li class="chip">Plotly</li><li class="chip">openFDA</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="https://github.com/Lalit287/ADR-Analytics-Dashboard" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project reveal" data-cat="data">
+          <span class="panel__tab panel__tab--cyan">ML</span>
+          <h3 class="card__title">Water Quality Prediction</h3>
+          <p>Water potability classifier: data cleaning, model experiments and a trained Random Forest served through a simple web app.</p>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">Python</li><li class="chip">scikit-learn</li><li class="chip">Random Forest</li><li class="chip">Jupyter</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="https://github.com/Lalit287/Water-Quality-Prediction" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project reveal" data-cat="fullstack">
+          <span class="panel__tab panel__tab--green">Web</span>
+          <h3 class="card__title">Finora</h3>
+          <p>A modern expense tracking dashboard focused on a clean, premium user experience.</p>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">React</li><li class="chip">Next.js</li><li class="chip">TypeScript</li><li class="chip">Tailwind CSS</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="https://github.com/Lalit287/Finora" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+
+        <article class="panel project reveal" data-cat="fullstack">
+          <span class="panel__tab panel__tab--green">Hackathon</span>
+          <h3 class="card__title">Digital Saathi</h3>
+          <p>Team-built digital literacy coach for Indian citizens: learning modules on UPI, banking and cybersecurity, an AI chatbot tutor, gamification and scam awareness.</p>
+          <ul class="chips" aria-label="Tech stack">
+            <li class="chip">React</li><li class="chip">Tailwind CSS</li><li class="chip chip--green">Node.js</li><li class="chip chip--green">Express</li><li class="chip chip--gold">MongoDB</li><li class="chip chip--orange">Firebase</li>
+          </ul>
+          <div class="project__links">
+            <a class="btn btn--small btn--ghost" href="https://github.com/Lalit287/Digital-Saathi" target="_blank" rel="noopener"><i data-icon="github"></i> Source</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="more reveal">
+        <a class="btn btn--secondary" href="https://github.com/Lalit287" target="_blank" rel="noopener"><i data-icon="github"></i> More on GitHub</a>
+      </p>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <h2 class="section__title reveal" id="skills-title"><span aria-hidden="true">03 ·</span> Skills</h2>
+      <div class="panel inventory reveal">
+        <span class="panel__tab">Inventory</span>
+        <div class="inventory__grid">
+          <div class="slot-group">
+            <h3 class="slot-group__title"><i data-icon="sword"></i> Languages</h3>
+            <ul class="slots">
+              <li>JavaScript</li><li>TypeScript</li><li>Python</li><li>Java</li><li>C++</li><li>SQL</li><li>PHP</li>
+            </ul>
+          </div>
+          <div class="slot-group">
+            <h3 class="slot-group__title"><i data-icon="shield"></i> Frontend</h3>
+            <ul class="slots">
+              <li>React</li><li>Next.js</li><li>HTML5</li><li>CSS3</li><li>Tailwind CSS</li>
+            </ul>
+          </div>
+          <div class="slot-group">
+            <h3 class="slot-group__title"><i data-icon="gear"></i> Backend</h3>
+            <ul class="slots">
+              <li>Node.js</li><li>Express.js</li><li>REST APIs</li><li>Socket.io</li>
+            </ul>
+          </div>
+          <div class="slot-group">
+            <h3 class="slot-group__title"><i data-icon="chest"></i> Databases</h3>
+            <ul class="slots">
+              <li>MongoDB</li><li>MySQL</li><li>PostgreSQL</li><li>DynamoDB</li>
+            </ul>
+          </div>
+          <div class="slot-group">
+            <h3 class="slot-group__title"><i data-icon="cloud"></i> Data &amp; Cloud</h3>
+            <ul class="slots">
+              <li>AWS</li><li>Azure</li><li>ETL / ELT</li><li>Power BI</li><li>Pandas</li><li>NumPy</li>
+            </ul>
+          </div>
+          <div class="slot-group">
+            <h3 class="slot-group__title"><i data-icon="potion"></i> Tools</h3>
+            <ul class="slots">
+              <li>Git</li><li>GitHub</li><li>VS Code</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION & CERTS ===== -->
+    <section class="section" id="education" aria-labelledby="edu-title">
+      <h2 class="section__title reveal" id="edu-title"><span aria-hidden="true">04 ·</span> Education</h2>
+      <div class="edu-grid">
+        <article class="panel reveal">
+          <span class="panel__tab">Level 3 · In progress</span>
+          <h3 class="card__title">SRM University</h3>
+          <p class="project__sub">B.Tech in Computer Science</p>
+          <p class="quest__date">2023 – 2027</p>
+          <div class="stat stat--wide">
+            <span class="stat__label">GPA</span>
+            <span class="bar" data-value="8.99" data-max="10" data-color="green" role="meter" aria-valuemin="0" aria-valuemax="10" aria-valuenow="8.99" aria-label="GPA 8.99 out of 10"></span>
+            <span class="stat__num">8.99 / 10</span>
+          </div>
+        </article>
+        <article class="panel reveal">
+          <span class="panel__tab panel__tab--green">Level 2 · Cleared</span>
+          <h3 class="card__title">FIITJEE</h3>
+          <p class="project__sub">Intermediate (Class XII)</p>
+          <p class="quest__date">2021 – 2023</p>
+          <div class="stat stat--wide">
+            <span class="stat__label">Score</span>
+            <span class="bar" data-value="96.4" data-max="100" data-color="cyan" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="96.4" aria-label="Score 96.4 percent"></span>
+            <span class="stat__num">96.4%</span>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="subhead reveal">Achievements unlocked</h3>
+      <ul class="achievements">
+        <li class="panel achievement reveal">
+          <i data-icon="trophy" class="achievement__icon"></i>
+          <div><p class="achievement__name">Oracle Certified: Java SE 17 Developer</p><p class="achievement__by">Oracle</p></div>
+        </li>
+        <li class="panel achievement reveal">
+          <i data-icon="trophy" class="achievement__icon"></i>
+          <div><p class="achievement__name">AWS Certified Cloud Practitioner</p><p class="achievement__by">Amazon Web Services</p></div>
+        </li>
+        <li class="panel achievement reveal">
+          <i data-icon="trophy" class="achievement__icon"></i>
+          <div><p class="achievement__name">Google AI Essentials</p><p class="achievement__by">Google</p></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <h2 class="section__title reveal" id="contact-title"><span aria-hidden="true">05 ·</span> Contact</h2>
+      <div class="contact-grid">
+        <div class="panel panel--dialog reveal">
+          <span class="panel__tab">Save point</span>
+          <p class="contact__lead">Hiring for software or data engineering roles, or want to build something together? Send a message and I'll get back to you.</p>
+          <ul class="contact-list">
+            <li><i data-icon="mail"></i> <a href="mailto:lalitadityayanala@gmail.com">lalitadityayanala@gmail.com</a></li>
+            <li><i data-icon="linkedin"></i> <a href="https://www.linkedin.com/in/lalit-aditya-yanala/" target="_blank" rel="noopener">linkedin.com/in/lalit-aditya-yanala</a></li>
+            <li><i data-icon="github"></i> <a href="https://github.com/Lalit287" target="_blank" rel="noopener">github.com/Lalit287</a></li>
+            <li><i data-icon="pin"></i> Vijayawada, Andhra Pradesh, India</li>
+          </ul>
+          <a class="btn btn--secondary" href="assets/Lalit-Aditya-Yanala-Resume.pdf" download><i data-icon="download"></i> Download resume</a>
+        </div>
+
+        <form class="panel contact-form reveal" id="contact-form" novalidate>
+          <span class="panel__tab panel__tab--cyan">New message</span>
+          <div class="field">
+            <label for="cf-name">Your name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Player 2">
+          </div>
+          <div class="field">
+            <label for="cf-subject">Subject</label>
+            <input id="cf-subject" name="subject" type="text" required placeholder="Let's talk about a role">
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required placeholder="Type your message…"></textarea>
+          </div>
+          <p class="form-hint" id="form-status" role="status">This opens your email app with the message filled in.</p>
+          <button class="btn" type="submit">► Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="ground" aria-hidden="true"></div>
+    <div class="footer__inner">
+      <p>© <span id="year">2026</span> Lalit Aditya Yanala · Made with <i data-icon="heart" class="footer__heart"></i> and pixels</p>
+      <a class="btn btn--small btn--ghost" href="#top">▲ Continue? Back to top</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
